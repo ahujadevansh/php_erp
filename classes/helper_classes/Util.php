@@ -3,14 +3,16 @@
 class Util
 {
     private $di;
+    private static $baseUrl;
 
     public function __construct($di)
     {
         $this->di = $di;
+        self::$baseUrl = $this->di->get('config')->get('base_url');
     }
 
     public function redirect($filePath) {
-        header('Location: ' . ($this->di->get('config')->get('base_url') . "views/pages/{$filePath}"));
+        header('Location: ' . (self::$baseUrl . "views/pages/{$filePath}"));
     }
 
     public static function createCSRFToken() {
@@ -20,6 +22,10 @@ class Util
 
     public static function verifyCSRFToken($data) {
         return (isset($data['csrf_token']) && Session::getSession('csrf_token') != null && $data['csrf_token'] == Session::getSession('csrf_token') && Session::getSession('token_expire') > time());
+    }
+
+    public static function dd ($var= "") {
+        die(var_dump($var));
     }
 
 }

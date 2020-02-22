@@ -36,8 +36,8 @@
   </a>
   <div id="collapseCategory" class="collapse <?= $sidebarSection == 'category' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item <?= $subsidebarSection == 'manage_category' ? 'active' : ''; ?>" href="#">Manage Category</a>
-      <a class="collapse-item <?= $subsidebarSection == 'add_category' ? 'active' : ''; ?>" href="#">Add Category</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'manage_category' ? 'active' : ''; ?>" href="#">Manage Category</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'add_category' ? 'active' : ''; ?>" href="#">Add Category</a>
     </div>
   </div>
 </li>

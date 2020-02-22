@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once(__DIR__ . "/requirements.php");
 
@@ -10,7 +10,7 @@ $di->set("errorhandler", new ErrorHandler());
 $di->set("validator", new Validator($di));
 $di->set("util", new Util($di));
 
-
+$di->set("category", new Category($di));
 
 require_once "constants.php";
 

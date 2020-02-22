@@ -10,8 +10,8 @@ class Validator {
         'required' => 'The :field field is required',
         'minlength' => "The :field field must be a minimum of :satisfier characters",
         'maxlength'=> "The :field field must be a maximum of :satisfier characters",
-        'unique' => 'That is not a valid email address',
-        'email' => 'The :field is already taken',
+        'email' => 'The :field is not a valid phone number',
+        'unique' => 'The :field is already taken',
         'phone' => 'The :field is not a valid phone number'
     ];
 
@@ -59,7 +59,7 @@ class Validator {
     }
 
     public function unique($field, $value, $satisfier) {
-        return !$this->di->get('database')->table($satisfier)->exists([$field=>$value]);
+        return !$this->di->get('database')->exists($satisfier, [$field=>$value]);
     }
 
     public function email($field, $value, $satisfier) {

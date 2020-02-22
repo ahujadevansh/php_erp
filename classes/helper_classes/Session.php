@@ -35,6 +35,17 @@ class Session
         }
     }
 
+    public static function hasSession($key) {
+        if(self::checkSession() && isset($_SESSION[$key]))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }
 
 ?>

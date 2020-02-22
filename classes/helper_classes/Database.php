@@ -12,7 +12,7 @@ class Database {
     protected $username;
     protected $password;
     protected $config;
-    
+
 
     public function __construct(DependancyInjector $di)
     {
@@ -24,7 +24,7 @@ class Database {
         $this->host = $this->config->get('host');
         $this->db = $this->config->get('db');
         $this->connectDB();
-    
+
     }
 
     public function connectDB() {
@@ -110,6 +110,7 @@ class Database {
         $sql = "SELECT {$columnNameString} FROM {$table} WHERE {$condition}";
         // die($sql);
         $this->stmt = $this->pdo->prepare($sql);
+        $this->stmt->execute();
         return $this->stmt->fetchAll($readMode);
     }
 
@@ -122,7 +123,6 @@ class Database {
     public function exists($table, $data) { //$data is mixed array
         $field = array_keys($data)[0];
         $result =  $this->readData($table, [], "{$field} = '{$data[$field]}'", PDO::FETCH_ASSOC);
-
         if(count($result) > 0) {
             return true;
         }

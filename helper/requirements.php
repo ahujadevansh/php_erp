@@ -13,4 +13,6 @@ require_once "{$app}/../classes/helper_classes/Validator.php";
 require_once "{$app}/../classes/helper_classes/TokenHandler.php";
 require_once "{$app}/../classes/helper_classes/Util.php";
 
+require_once "{$app}/../classes/Category.php";
+
 ?>
