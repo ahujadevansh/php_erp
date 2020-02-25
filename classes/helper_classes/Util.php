@@ -28,6 +28,17 @@ class Util
         die(var_dump($var));
     }
 
+    public static function truncateWords($str, $count = 50, $apenDots=True)
+    {
+        $strArray = explode(" ",$str);
+        $noOfWords = count($strArray);
+        $strArray = array_slice($strArray, 0, $count);
+        if($noOfWords > $count && $apenDots)
+        {
+            $strArray[] = "....";
+        }
+        return implode(" ", $strArray);
+    }
 }
 
 

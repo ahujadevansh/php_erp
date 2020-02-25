@@ -70,11 +70,26 @@ if(Session::hasSession('old'))
                                 id="name"
                                 class="form-control <?= $errors!='' && $errors->has('name') ? 'error' : '';?>"
                                 placeholder = "Enter Category Name"
-                                value="<?=$old != '' && isset($old['name']) ?$old['name']: '';?>"/>
+                                value="<?=$old != '' && isset($old['name']) ?$old['name']: '';?>"
+                                required/>
                         <?php
                           if($errors!="" && $errors->has('name'))
                           {
                             echo "<span class='error'>{$errors->first('name')}</span>";
+                          }
+                        ?>
+                      </div>
+                      <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="description"
+                                  id="description"
+                                  class="form-control <?= $errors!='' && $errors->has('description') ? 'error' : '';?>"
+                                  placeholder = "Enter Description"
+                        ><?=$old != '' && isset($old['description']) ?$old['description']: '';?></textarea>
+                        <?php
+                          if($errors!="" && $errors->has('description'))
+                          {
+                            echo "<span class='error'>{$errors->first('description')}</span>";
                           }
                         ?>
                       </div>

@@ -26,4 +26,18 @@ if(isset($_POST['add_category']))
         }
     }
 }
+
+if(isset($_POST['page']))
+{
+    if($_POST['page'] == 'manage_category')
+    {
+        $search_parameter = $_POST['search']['value'] ?? null;
+        $order_by = $_POST['order'] ?? null;
+        $start = $_POST['start'];
+        $length = $_POST['length'];
+        $draw = $_POST['draw'];
+        $di->get("category")->getJSONDataForDataTable($draw, $search_parameter, $order_by, $start, $length);
+
+    }
+}
 ?>

@@ -1,13 +1,13 @@
 <?php
     require_once(__DIR__ . "/../../helper/init.php" );
     $sidebarSection = 'dashbord';
-    $subsidebarSection = '' ;
+    $sidebarSubSection = '' ;
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<?php 
+<?php
   $title = 'Easy ERP';
 ?>
 <?php require_once(__DIR__ . "/../includes/head-section.php") ?>
@@ -31,14 +31,14 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-        
+
         </div>
         <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
 
-      
+
     <?php require_once(__DIR__ . "/../includes/footer.php") ?>
 
     </div>
@@ -47,12 +47,12 @@
   </div>
   <!-- End of Page Wrapper -->
 
-  
+
 <?php require_once(__DIR__ . "/../includes/scroll-to-top.php") ?>
 
- 
 
-  
+
+
 <?php require_once(__DIR__ . "/../includes/core-scripts.php") ?>
 
 

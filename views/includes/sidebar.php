@@ -50,8 +50,8 @@
   </a>
   <div id="collapseCustomer" class="collapse <?= $sidebarSection == 'customer' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item <?= $sidebarSubSection == 'manage_customer' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>manage-category.php">Manage Customers</a>
-      <a class="collapse-item <?= $sidebarSubSection == 'add_customer' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-category.php">Add Customer</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'manage_customer' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>manage-customer.php">Manage Customers</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'add_customer' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-customer.php">Add Customer</a>
     </div>
   </div>
 </li>
@@ -64,8 +64,8 @@
   </a>
   <div id="collapseEmployee" class="collapse <?= $sidebarSection == 'employee' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item <?= $sidebarSubSection == 'manage_employee' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>manage-category.php">Manage Employees</a>
-      <a class="collapse-item <?= $sidebarSubSection == 'add_employee' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-category.php">Add Employee</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'manage_employee' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>manage-employee.php">Manage Employees</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'add_employee' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-employee.php">Add Employee</a>
     </div>
   </div>
 </li>
@@ -78,9 +78,9 @@
   </a>
   <div id="collapseProduct" class="collapse <?= $sidebarSection == 'product' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item <?= $sidebarSubSection == 'manage_product' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>manage-category.php">Manage Products</a>
-      <a class="collapse-item <?= $sidebarSubSection == 'check_current_inventory' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-category.php">Check Current Inventory</a>
-      <a class="collapse-item <?= $sidebarSubSection == 'add_product' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-category.php">Add Product</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'manage_product' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>manage-product.php">Manage Products</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'check_current_inventory' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>check-current-inventory.php">Check Current Inventory</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'add_product' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-product.php">Add Product</a>
     </div>
   </div>
 </li>
@@ -93,8 +93,8 @@
   </a>
   <div id="collapseSupplier" class="collapse <?= $sidebarSection == 'supplier' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item <?= $sidebarSubSection == 'manage_supplier' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>manage-category.php">Manage Suppliers</a>
-      <a class="collapse-item <?= $sidebarSubSection == 'add_supplier' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-category.php">Add Supplier</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'manage_supplier' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>manage-supplier.php">Manage Suppliers</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'add_supplier' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-supplier.php">Add Supplier</a>
     </div>
   </div>
 </li>

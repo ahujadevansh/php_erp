@@ -5,6 +5,9 @@ $(function(){
                 required: true,
                 minlength: 2,
                 maxlength: 255
+            },
+            'description':{
+                required: false
             }
         },
         submitHandler: function(form) {

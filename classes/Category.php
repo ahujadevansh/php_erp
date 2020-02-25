@@ -22,6 +22,9 @@ class Category{
                 'minlength' => 2,
                 'maxlength' => 255,
                 'unique' => $this->table
+            ],
+            'description' => [
+                'required' => false,
             ]
         ]);
     }
@@ -38,7 +41,10 @@ class Category{
             {
                 //Begin Transaction
                 $this->database->beginTransaction();
-                $data_to_be_inserted = ['name' => $data['name']];
+                $data_to_be_inserted = [
+                    'name' => $data['name'],
+                    'description' => $data['description']
+                ];
                 $category_id = $this->database->insert($this->table, $data_to_be_inserted);
                 $this->database->commit();
                 return ADD_SUCCESS;
@@ -54,5 +60,83 @@ class Category{
             //Validation Failed!
             return VALIDATION_ERROR;
         }
+    }
+
+    public function getJSONDataForDataTable($draw, $searchParameter, $orderBy, $start, $length)
+    {
+        $columns = ['sr_no', 'name', 'description'];
+        $totalRowCountQuery = "SELECT COUNT(id) as total_count FROM {$this->table} Where deleted=0";
+        $filteredRowCountQuery = "SELECT COUNT(id) as filtered_total_count FROM {$this->table} WHERE deleted=0";
+        $query = "SELECT * FROM {$this->table} WHERE deleted=0";
+
+        if($searchParameter != Null)
+        {
+            $query .= " AND name LIKE %{$searchParameter}%";
+            $filteredRowCountQuery .= " AND name LIKE %{$searchParameter}%";
+        }
+        $orderByLength =  count($orderBy);
+
+        if($orderBy != Null)
+        {
+            if($orderByLength==1)
+            {
+                $query .= " ORDER BY {$columns[$orderBy[0]['column']]} {$orderBy[0]['dir']}";
+            }
+            else
+            {
+                for ($i=0; $i<$orderByLength; $i++)
+                {
+                    if($i==0)
+                    {
+                        $query .= " ORDER BY {$columns[$orderBy[$i]['column']]} {$orderBy[$i]['dir']}";
+                    }
+                    else
+                    {
+                        $query .= ", {$columns[$orderBy[$i]['column']]} {$orderBy[$i]['dir']}";
+                    }
+                }
+            }
+        }
+        else
+        {
+            //  if "order" is defined in java script this code is redundant
+            $query .= " ORDER BY {$columns[0]} ASC";
+        }
+
+        if($length != -1)
+        {
+            $query .= " LIMIT {$start}, {$length};";
+        }
+
+        $totalRowCountResult = $this->database->raw($totalRowCountQuery);
+        $numberOfTotalRows = is_array($totalRowCountResult) ? $totalRowCountResult[0]->total_count : 0;
+
+        $filteredRowCountResult = $this->database->raw($filteredRowCountQuery);
+        $numberOfFilteredRows = is_array($filteredRowCountResult) ? $filteredRowCountResult[0]->filtered_total_count : 0;
+        $filteredData = $this->database->raw($query);
+        $numberOfRowsToDisplay = is_array($filteredData) ? count($filteredData) : 0;
+
+        $data = array();
+        for($i=0; $i<$numberOfRowsToDisplay; $i++)
+        {
+            $subarray = array();
+            $subarray[] = $i+1;
+            $subarray[] = $filteredData[$i]->name;
+            $subarray[] = $this->di->get('util')->truncateWords($filteredData[$i]->description, 25);
+            $subarray[] = <<<BUTTONS
+                <button class='edit btn btn-outline-primary m-1' id='{$filteredData[$i]->id}' data-toggle="modal" data-target="#editModal"><i class='fas fa-pencil-alt'></i>Edit</button>
+                <button class='delete btn btn-outline-danger m-1' id='{$filteredData[$i]->id}' data-toggle="modal" data-target="#deleteModal"><i class='fas fa-trash'></i>Delete</button>
+            BUTTONS;
+            $data[] = $subarray;
+        }
+
+        $output = array(
+            "draw"=>$draw,
+            "recordsTotal"=>$numberOfTotalRows,
+            "recordsFiltered"=>$numberOfFilteredRows,
+            "data"=>$data
+        );
+
+        echo json_encode($output);
     }
 }

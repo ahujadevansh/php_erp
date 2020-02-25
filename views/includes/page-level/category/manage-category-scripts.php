@@ -1,4 +1,7 @@
 <script src="<?=BASEASSETS;?>vendor/toastr/toastr.min.js"></script>
+<script src="<?=BASEASSETS;?>vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?=BASEASSETS;?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
 <script>
     toastr.options = {
         "closeButton": true,
@@ -31,3 +34,6 @@
     endif;
     ?>
 </script>
+
+<script src="<?=BASEASSETS;?>js/pages/category/manage-category.js" ></script>
+

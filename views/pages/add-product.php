@@ -1,7 +1,7 @@
 <?php
     require_once(__DIR__ . "/../../helper/init.php" );
-    $sidebarSection = 'dashbord';
-    $subsidebarSection = '' ;
+    $sidebarSection = 'product';
+    $sidebarSubSection = 'add_product' ;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +31,35 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Product</h1>
+            <a href="<?= BASEPAGES; ?>manage-product.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+              <i class="fa fa-list-ul fa-sm text-white-75"></i> Manage Product
+            </a>
+          </div>
+
+          <div class="row">
+
+            <div class="col-lg-12">
+
+              <!-- Basic Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Add Product</h6>
+                </div>
+                <div class="card-body">
+                  <div class="col-md-12">
+
+                    <form action="<?=BASEURL;?>helper/routing.php" method="POST" id="add-product">
+
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
         <!-- /.container-fluid -->

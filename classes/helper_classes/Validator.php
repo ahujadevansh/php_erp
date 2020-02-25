@@ -45,8 +45,11 @@ class Validator {
     }
 
     public function required($field, $value, $satisfier) {
+
         if ($satisfier):
             return !empty(trim($value));
+        else:
+            return true;
         endif;
     }
 
