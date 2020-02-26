@@ -28,7 +28,7 @@
         Session::unsetSession(ADD_SUCCESS);
     elseif(Session::hasSession(ADD_ERROR)):
     ?>
-        toastr.error("<?=Session::getSession(ADD_ERROR);?>", "Success");
+        toastr.error("<?=Session::getSession(ADD_ERROR);?>", "Failure!");
     <?php
         Session::unsetSession(ADD_ERROR);
     elseif(Session::hasSession(EDIT_SUCCESS)):
@@ -36,9 +36,14 @@
         toastr.success("<?=Session::getSession(EDIT_SUCCESS);?>", "Success");
     <?php
         Session::unsetSession(EDIT_SUCCESS);
+    elseif(Session::hasSession(VALIDATION_ERROR)):
+    ?>
+        toastr.error("<?=Session::getSession(VALIDATION_ERROR);?>", "Failure!");
+    <?php
+        Session::unsetSession(VALIDATION_ERROR);
     elseif(Session::hasSession(EDIT_ERROR)):
     ?>
-        toastr.error("<?=Session::getSession(EDIT_ERROR);?>", "Success");
+        toastr.error("<?=Session::getSession(EDIT_ERROR);?>", "Failure!");
     <?php
         Session::unsetSession(EDIT_ERROR);
     elseif(Session::hasSession(DELETE_SUCCESS)):
@@ -48,7 +53,7 @@
         Session::unsetSession(DELETE_SUCCESS);
     elseif(Session::hasSession(DELETE_ERROR)):
     ?>
-        toastr.error("<?=Session::getSession(DELETE_ERROR);?>", "Success");
+        toastr.error("<?=Session::getSession(DELETE_ERROR);?>", "Failure!");
     <?php
         Session::unsetSession(DELETE_ERROR);
     endif;

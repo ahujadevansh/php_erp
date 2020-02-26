@@ -87,7 +87,7 @@ $sidebarSubSection = "manage_category";
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-danger" name="delete_category">Delete</button>
+            <button type="submit" class="btn btn-danger" name="page" value="delete_category">Delete</button>
           </div>
         </form>
       </div>
@@ -120,7 +120,7 @@ $sidebarSubSection = "manage_category";
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" name="edit_category">Save changes</button>
+            <button type="submit" class="btn btn-primary" name="page" value="edit_category">Save changes</button>
           </div>
         </form>
       </div>

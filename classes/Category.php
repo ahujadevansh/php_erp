@@ -128,7 +128,7 @@ class Category{
             if($description[1] == 1)
             {
                 $description[0] .= <<<VIEWMORE
-                <a class='edit m-1 text-primary' id='{$filteredData[$i]->id}' data-toggle="modal" data-target="#editModal">view more</a>
+                <a class='edit m-1 text-primary' id='{$filteredData[$i]->id}' style="cursor: pointer;text-decoration: underline;" data-toggle="modal" data-target="#editModal">view more</a>
                 VIEWMORE;
             }
             $subarray[] = $description[0];
@@ -161,8 +161,14 @@ class Category{
     {
         $validationData['name'] = $data['category_name'];
         $validationData['description'] = $data['category_description'];
+        $old = $this->getCategoryById($id);
+        $editDescriptionOnly = False;
+        if($old[0]->name == $validationData['name'])
+        {
+            $editDescriptionOnly = True;
+        }
         $validation = $this->validateData($validationData);
-        if(!$validation->fails())
+        if(!$validation->fails() || $editDescriptionOnly)
         {
             try{
                 $this->database->beginTransaction();

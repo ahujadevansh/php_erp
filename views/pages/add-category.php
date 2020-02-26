@@ -26,7 +26,7 @@ if(Session::hasSession('old'))
   ?>
 
   <!--PLACE TO ADD YOUR CUSTOM CSS-->
-
+  <link href="<?= BASEASSETS?>css/form.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -64,7 +64,7 @@ if(Session::hasSession('old'))
                       <input type="hidden" name="csrf_token" value="<?= Session::getSession('csrf_token');?>">
                       <!--FORM GROUP-->
                       <div class="form-group">
-                        <label class="text-dark" for="name">Category Name</label>
+                        <label class="text-dark" for="name">Category Name<span class="required">*</span></label>
                         <input  type="text"
                                 name="name"
                                 id="name"
@@ -94,7 +94,7 @@ if(Session::hasSession('old'))
                         ?>
                       </div>
                       <!--/FORM GROUP-->
-                      <button type="submit" class="btn btn-primary" name="add_category" value="addCategory"><i class="fa fa-check"></i> Submit</button>
+                      <button type="submit" class="btn btn-primary" name="page" value="add_category"><i class="fa fa-check"></i> Submit</button>
                     </form>
 
                   </div>
