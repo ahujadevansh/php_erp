@@ -33,7 +33,7 @@ $sidebarSubSection = "manage_category";
               <i class="fa fa-plus fa-sm text-white-75"></i> Add Category
             </a>
           </div>
-
+          <!-- Begin Card -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Manage Categories</h6>
@@ -53,6 +53,7 @@ $sidebarSubSection = "manage_category";
               </div>
             </div>
           </div>
+          <!-- End of card -->
         </div>
         <!-- /.container-fluid -->
       </div>
@@ -66,6 +67,71 @@ $sidebarSubSection = "manage_category";
     <!-- End of Content Wrapper -->
   </div>
   <!-- End of Page Wrapper -->
+
+
+    <!--DELETE MODAL-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="<?= BASEURL;?>helper/routing.php" method="POST">
+          <div class="modal-body">
+            <input type="hidden" name="csrf_token" id="csrf_token" value="<?= Session::getSession('csrf_token');?>">
+            <input type="hidden" name="record_id" id="record_id">
+            <p class="text-danger">Are you sure you want to delete this record?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger" name="delete_category">Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--/DELETE MODAL-->
+
+
+  <!--EDIT MODAL-->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="<?= BASEURL;?>helper/routing.php" method="POST">
+          <div class="modal-body">
+            <input type="hidden" name="csrf_token" id="csrf_token" value="<?= Session::getSession('csrf_token');?>">
+            <input type="hidden" name="category_id" id="category_id">
+            <div class="form-group-row">
+                <label class="text-dark" for="name" class="col-sm-12">Category Name</label>
+                <input type="text" class="form-control" id="category_name" name="category_name">
+            </div>
+            <div class="form-group">
+              <label class="text-dark" for="description">Description</label>
+              <textarea name="category_description" id="category_description" class="form-control" rows="7"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" name="edit_category">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--/EDIT MODAL-->
+
+
+
+
+
 
 
   <?php

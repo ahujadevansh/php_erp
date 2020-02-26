@@ -64,7 +64,7 @@ if(Session::hasSession('old'))
                       <input type="hidden" name="csrf_token" value="<?= Session::getSession('csrf_token');?>">
                       <!--FORM GROUP-->
                       <div class="form-group">
-                        <label for="name">Category Name</label>
+                        <label class="text-dark" for="name">Category Name</label>
                         <input  type="text"
                                 name="name"
                                 id="name"
@@ -80,7 +80,7 @@ if(Session::hasSession('old'))
                         ?>
                       </div>
                       <div class="form-group">
-                        <label for="description">Description</label>
+                        <label class="text-dark" for="description">Description</label>
                         <textarea name="description"
                                   id="description"
                                   class="form-control <?= $errors!='' && $errors->has('description') ? 'error' : '';?>"

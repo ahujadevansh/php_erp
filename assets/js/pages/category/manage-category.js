@@ -26,6 +26,39 @@ var TableDataTables = function(){
                 'targets': [0, -1, -2]
             }],
         });
+        manageCategoryTable.on('click', '.edit', function(){
+            id = $(this).attr('id');
+            $("#category_id").val(id);
+            $.ajax({
+                url: baseURL + filePath,
+                method: "POST",
+                data: {
+                    "category_id": id,
+                    "fetch": "category"
+                },
+                dataType: "json",
+                success: function(data){
+                    $("#category_name").val(data[0].name);
+                    $("#category_description").val(data[0].description);
+                }
+            });
+        });
+        manageCategoryTable.on('click', '.delete', function(){
+            id = $(this).attr('id');
+            $("#record_id").val(id);
+            $.ajax({
+                url: baseURL + filePath,
+                method: "POST",
+                data: {
+                    "category_id": id,
+                    "fetch": "category"
+                },
+                dataType: "json",
+                success: function(data){
+                    $("#category_name").val(data[0].name);
+                }
+            });
+        });
     }
     return{
         init: function(){

@@ -71,8 +71,8 @@ class Category{
 
         if($searchParameter != Null)
         {
-            $query .= " AND name LIKE %{$searchParameter}%";
-            $filteredRowCountQuery .= " AND name LIKE %{$searchParameter}%";
+            $query .= " AND name LIKE '%{$searchParameter}%'";
+            $filteredRowCountQuery .= " AND name LIKE '%{$searchParameter}%'";
         }
         $orderByLength =  count($orderBy);
 
@@ -113,6 +113,8 @@ class Category{
 
         $filteredRowCountResult = $this->database->raw($filteredRowCountQuery);
         $numberOfFilteredRows = is_array($filteredRowCountResult) ? $filteredRowCountResult[0]->filtered_total_count : 0;
+
+
         $filteredData = $this->database->raw($query);
         $numberOfRowsToDisplay = is_array($filteredData) ? count($filteredData) : 0;
 
@@ -122,7 +124,14 @@ class Category{
             $subarray = array();
             $subarray[] = $i+1;
             $subarray[] = $filteredData[$i]->name;
-            $subarray[] = $this->di->get('util')->truncateWords($filteredData[$i]->description, 25);
+            $description = $this->di->get('util')->truncateWords($filteredData[$i]->description, 25);
+            if($description[1] == 1)
+            {
+                $description[0] .= <<<VIEWMORE
+                <a class='edit m-1 text-primary' id='{$filteredData[$i]->id}' data-toggle="modal" data-target="#editModal">view more</a>
+                VIEWMORE;
+            }
+            $subarray[] = $description[0];
             $subarray[] = <<<BUTTONS
                 <button class='edit btn btn-outline-primary m-1' id='{$filteredData[$i]->id}' data-toggle="modal" data-target="#editModal"><i class='fas fa-pencil-alt'></i>Edit</button>
                 <button class='delete btn btn-outline-danger m-1' id='{$filteredData[$i]->id}' data-toggle="modal" data-target="#deleteModal"><i class='fas fa-trash'></i>Delete</button>
@@ -139,4 +148,51 @@ class Category{
 
         echo json_encode($output);
     }
+
+
+    public function getCategoryById($categoryId, $mode=PDO::FETCH_OBJ)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE deleted = 0 AND id = {$categoryId}";
+        $result = $this->database->raw($query, $mode);
+        return $result;
+    }
+
+    public function update($data, $id)
+    {
+        $validationData['name'] = $data['category_name'];
+        $validationData['description'] = $data['category_description'];
+        $validation = $this->validateData($validationData);
+        if(!$validation->fails())
+        {
+            try{
+                $this->database->beginTransaction();
+                $filteredData['name'] = $data['category_name'];
+                $filteredData['description'] = $data['category_description'];
+                $this->database->update($this->table, $filteredData, "id={$id}");
+                $this->database->commit();
+                return EDIT_SUCCESS;
+            }catch(Exception $e){
+                $this->database->rollback();
+                return EDIT_ERROR;
+            }
+        }
+        else
+        {
+            return VALIDATION_ERROR;
+        }
+    }
+
+    public function delete($id)
+    {
+        try{
+            $this->database->beginTransaction();
+            $this->database->delete($this->table, "id={$id}");
+            $this->database->commit();
+            return DELETE_SUCCESS;
+        }catch(Exception $e){
+            $this->database->rollback();
+            return DELETE_ERROR;
+        }
+    }
+
 }

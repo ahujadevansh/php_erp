@@ -33,11 +33,13 @@ class Util
         $strArray = explode(" ",$str);
         $noOfWords = count($strArray);
         $strArray = array_slice($strArray, 0, $count);
+        $more = 0;
         if($noOfWords > $count && $apenDots)
         {
             $strArray[] = "....";
+            $more = 1;
         }
-        return implode(" ", $strArray);
+        return [implode(" ", $strArray), $more];
     }
 }
 
