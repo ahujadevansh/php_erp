@@ -69,6 +69,7 @@ if(isset($_POST['page']))
         }
 
     }
+
     if($_POST['page'] == 'manage_category')
     {
         $search_parameter = $_POST['search']['value'] ?? null;
@@ -78,6 +79,7 @@ if(isset($_POST['page']))
         $draw = $_POST['draw'];
         $di->get("category")->getJSONDataForDataTable($draw, $search_parameter, $order_by, $start, $length);
     }
+
 }
 
 
