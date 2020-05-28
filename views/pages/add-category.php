@@ -72,12 +72,12 @@ if(Session::hasSession('old'))
                                 placeholder = "Enter Category Name"
                                 value="<?=$old != '' && isset($old['name']) ?$old['name']: '';?>"
                                 required/>
-                        <?php
-                          if($errors!="" && $errors->has('name'))
-                          {
-                            echo "<span class='error'>{$errors->first('name')}</span>";
-                          }
-                        ?>
+<?php
+  if($errors!="" && $errors->has('name'))
+  {
+    echo "<span class='error'>{$errors->first('name')}</span>";
+  }
+?>
                       </div>
                       <div class="form-group">
                         <label class="text-dark" for="description">Description</label>
@@ -86,12 +86,12 @@ if(Session::hasSession('old'))
                                   class="form-control <?= $errors!='' && $errors->has('description') ? 'error' : '';?>"
                                   placeholder = "Enter Description"
                         ><?=$old != '' && isset($old['description']) ?$old['description']: '';?></textarea>
-                        <?php
-                          if($errors!="" && $errors->has('description'))
-                          {
-                            echo "<span class='error'>{$errors->first('description')}</span>";
-                          }
-                        ?>
+<?php
+  if($errors!="" && $errors->has('description'))
+  {
+    echo "<span class='error'>{$errors->first('description')}</span>";
+  }
+?>
                       </div>
                       <!--/FORM GROUP-->
                       <button type="submit" class="btn btn-primary" name="page" value="add_category"><i class="fa fa-check"></i> Submit</button>

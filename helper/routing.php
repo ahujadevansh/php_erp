@@ -68,6 +68,27 @@ if(isset($_POST['page']))
             }
         }
 
+        if($_POST['page'] == 'add_product') {
+            $result = $di->get('product')->addProduct($_POST);
+            switch($result)
+            {
+                case ADD_ERROR:
+                    Session::setSession(ADD_ERROR, 'There was problem while inserting record, please try again later!');
+                    Util::redirect('manage-product.php');
+                    break;
+                case ADD_SUCCESS:
+                    Session::setSession(ADD_SUCCESS, 'The record have been added successfully!');
+                    Util::redirect('manage-product.php');
+                    break;
+                case VALIDATION_ERROR:
+                    Session::setSession(VALIDATION_ERROR, 'There was some problem in validating your data at server side!');
+                    Session::setSession('errors', serialize($di->get('validator')->errors()));
+                    Session::setSession('old', $_POST);
+                    Util::redirect('add-product.php');
+                    break;
+            }
+        }
+
     }
 
     if($_POST['page'] == 'manage_category')

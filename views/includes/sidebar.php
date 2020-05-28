@@ -99,6 +99,20 @@
   </div>
 </li>
 
+<!-- Nav Item - Transaction Collapse Menu -->
+<li class="nav-item <?= $sidebarSection == 'transaction' ? 'active' : ''; ?>">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTransaction" aria-expanded="true" aria-controls="collapseTransaction">
+    <i class="fas fa-fw fa-cog"></i>
+    <span>Transaction</span>
+  </a>
+  <div id="collapseTransaction" class="collapse <?= $sidebarSection == 'transaction' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <a class="collapse-item <?= $sidebarSubSection == 'purchase' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-purchase.php">Purchase</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'sales' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-sales.php">Sale</a>
+    </div>
+  </div>
+</li>
+
 
 <!-- Divider -->
 <hr class="sidebar-divider">
