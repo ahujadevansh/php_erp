@@ -7,14 +7,12 @@ class Category{
     private $database;
     protected $di;
 
-    public function __construct($di)
-    {
+    public function __construct($di) {
         $this->di = $di;
         $this->database = $this->di->get('database');
     }
 
-    private function validateData($data)
-    {
+    private function validateData($data) {
         $validator = $this->di->get('validator');
         return $validator->check($data, [
             'name' => [
@@ -31,8 +29,7 @@ class Category{
     /**
      * This function is responsible to accept the data from the Routing and add it to the Database.
      */
-    public function addCategory($data)
-    {
+    public function addCategory($data) {
         $validation = $this->validateData($data);
         if(!$validation->fails())
         {
@@ -62,8 +59,7 @@ class Category{
         }
     }
 
-    public function getJSONDataForDataTable($draw, $searchParameter, $orderBy, $start, $length)
-    {
+    public function getJSONDataForDataTable($draw, $searchParameter, $orderBy, $start, $length) {
         $columns = ['sr_no', 'name', 'description'];
         $totalRowCountQuery = "SELECT COUNT(id) as total_count FROM {$this->table} Where deleted=0";
         $filteredRowCountQuery = "SELECT COUNT(id) as filtered_total_count FROM {$this->table} WHERE deleted=0";
@@ -122,7 +118,7 @@ class Category{
         for($i=0; $i<$numberOfRowsToDisplay; $i++)
         {
             $subarray = array();
-            $subarray[] = $i+1;
+            $subarray[] = $start+$i+1;
             $subarray[] = $filteredData[$i]->name;
             $description = $this->di->get('util')->truncateWords($filteredData[$i]->description, 25);
             if($description[1] == 1)
@@ -150,15 +146,13 @@ class Category{
     }
 
 
-    public function getCategoryById($categoryId, $mode=PDO::FETCH_OBJ)
-    {
+    public function getCategoryById($categoryId, $mode=PDO::FETCH_OBJ) {
         $query = "SELECT * FROM {$this->table} WHERE deleted = 0 AND id = {$categoryId}";
         $result = $this->database->raw($query, $mode);
         return $result;
     }
 
-    public function update($data, $id)
-    {
+    public function update($data, $id) {
         $validationData['name'] = $data['category_name'];
         $validationData['description'] = $data['category_description'];
         $old = $this->getCategoryById($id);
@@ -188,8 +182,7 @@ class Category{
         }
     }
 
-    public function delete($id)
-    {
+    public function delete($id) {
         try{
             $this->database->beginTransaction();
             $this->database->delete($this->table, "id={$id}");
@@ -199,6 +192,10 @@ class Category{
             $this->database->rollback();
             return DELETE_ERROR;
         }
+    }
+
+    public function all($fields = []) {
+        return $this->database->readData($this->table, $fields, 'deleted = 0');
     }
 
 }

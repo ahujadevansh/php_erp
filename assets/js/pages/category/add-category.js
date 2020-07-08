@@ -1,6 +1,6 @@
 $(function(){
     $("#add-category").validate({
-        'rules': {
+        rules: {
             'name':{
                 required: true,
                 minlength: 2,

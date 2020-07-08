@@ -8,18 +8,17 @@ end_of_line = crlf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{py,rst,ini}]
+[*.{php,rst,ini}]
 indent_style = space
 indent_size = 4
 
-[*.py]
+[*.php]
 line_length = 120
 known_first_party = news
 multi_line_output = 3
 default_section = THIRDPARTY
 recursive = true
-skip = venv/
-skip_glob = **/migrations/*.py
+skip = vendor/
 include_trailing_comma = true
 force_grid_wrap = 0
 use_parentheses = true

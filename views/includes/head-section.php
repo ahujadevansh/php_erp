@@ -14,3 +14,6 @@
 
   <!-- Custom styles for this template-->
   <link href="<?= BASEASSETS?>css/sb-admin-2.css" rel="stylesheet">
+
+  <!-- Toastr Css -->
+  <link rel="stylesheet" href="<?=BASEASSETS;?>vendor/toastr/toastr.min.css">

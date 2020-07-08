@@ -1,2 +1,0 @@
-<?= $sidebarSection == '' ? 'active' : ''; ?>
-<?= $subsidebarSection == '' ? 'active' : ''; ?>

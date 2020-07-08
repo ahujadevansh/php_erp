@@ -11,7 +11,7 @@ class Session
         }
     }
     public static function destroySession() {
-        if(!self::checkSession()) {
+        if(self::checkSession()) {
             session_destroy();
         }
     }

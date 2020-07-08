@@ -57,10 +57,11 @@ if(Session::hasSession('old'))
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Add Category</h6>
                 </div>
-                <div class="card-body">
-                  <div class="col-md-12">
 
-                    <form action="<?=BASEURL;?>helper/routing.php" method="POST" id="add-category">
+                <form action="<?=BASEURL;?>helper/routing.php" method="POST" id="add-category">
+                  <div class="card-body">
+                    <div class="col-md-12">
+
                       <input type="hidden" name="csrf_token" value="<?= Session::getSession('csrf_token');?>">
                       <!--FORM GROUP-->
                       <div class="form-group">
@@ -94,11 +95,14 @@ if(Session::hasSession('old'))
 ?>
                       </div>
                       <!--/FORM GROUP-->
-                      <button type="submit" class="btn btn-primary" name="page" value="add_category"><i class="fa fa-check"></i> Submit</button>
-                    </form>
 
+
+                    </div>
                   </div>
-                </div>
+                  <div class="card-footer d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary mb-3" name="page" value="add_category"><i class="fa fa-check"></i> Submit</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

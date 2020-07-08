@@ -23,15 +23,10 @@
 <!-- Divider -->
 <hr class="sidebar-divider">
 
-<!-- Heading -->
-<div class="sidebar-heading">
-  Modules
-</div>
-
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item <?= $sidebarSection == 'category' ? 'active' : ''; ?>">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
-    <i class="fas fa-fw fa-cog"></i>
+  <a class="nav-link <?= $sidebarSection == 'category' ? '' : 'collapsed'; ?>" href="#" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
+    <i class="fas fa-fw fa-list"></i>
     <span>Category</span>
   </a>
   <div id="collapseCategory" class="collapse <?= $sidebarSection == 'category' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -44,8 +39,8 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item <?= $sidebarSection == 'customer' ? 'active' : ''; ?>">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomer" aria-expanded="true" aria-controls="collapseCustomer">
-    <i class="fas fa-fw fa-cog"></i>
+  <a class="nav-link <?= $sidebarSection == 'customer' ? '' : 'collapsed'; ?>" href="#" data-toggle="collapse" data-target="#collapseCustomer" aria-expanded="true" aria-controls="collapseCustomer">
+    <i class="fas fa-fw fa-users"></i>
     <span>Customers</span>
   </a>
   <div id="collapseCustomer" class="collapse <?= $sidebarSection == 'customer' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -58,8 +53,8 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item <?= $sidebarSection == 'employee' ? 'active' : ''; ?>">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmployee" aria-expanded="true" aria-controls="collapseEmployee">
-    <i class="fas fa-fw fa-cog"></i>
+  <a class="nav-link <?= $sidebarSection == 'employee' ? '' : 'collapsed'; ?>" href="#" data-toggle="collapse" data-target="#collapseEmployee" aria-expanded="true" aria-controls="collapseEmployee">
+    <i class="fas fa-fw fa-user-tie"></i>
     <span>Employees</span>
   </a>
   <div id="collapseEmployee" class="collapse <?= $sidebarSection == 'employee' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -72,8 +67,8 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item <?= $sidebarSection == 'product' ? 'active' : ''; ?>">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
-    <i class="fas fa-fw fa-cog"></i>
+  <a class="nav-link <?= $sidebarSection == 'product' ? '' : 'collapsed'; ?>" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
+    <i class="fas fa-fw fa-shopping-bag"></i>
     <span>Products</span>
   </a>
   <div id="collapseProduct" class="collapse <?= $sidebarSection == 'product' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -81,14 +76,15 @@
       <a class="collapse-item <?= $sidebarSubSection == 'manage_product' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>manage-product.php">Manage Products</a>
       <a class="collapse-item <?= $sidebarSubSection == 'check_current_inventory' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>check-current-inventory.php">Check Current Inventory</a>
       <a class="collapse-item <?= $sidebarSubSection == 'add_product' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-product.php">Add Product</a>
+      <a class="collapse-item <?= $sidebarSubSection == 'add_product_store' ? 'active' : ''; ?>" href="<?= BASEPAGES; ?>add-product-store.php">Add Product</a>
     </div>
   </div>
 </li>
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item <?= $sidebarSection == 'supplier' ? 'active' : ''; ?>">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSupplier" aria-expanded="true" aria-controls="collapseSupplier">
-    <i class="fas fa-fw fa-cog"></i>
+  <a class="nav-link <?= $sidebarSection == 'supplier' ? '' : 'collapsed'; ?>" href="#" data-toggle="collapse" data-target="#collapseSupplier" aria-expanded="true" aria-controls="collapseSupplier">
+    <i class="fas fa-fw fa-truck"></i>
     <span>Suppliers</span>
   </a>
   <div id="collapseSupplier" class="collapse <?= $sidebarSection == 'supplier' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -101,8 +97,8 @@
 
 <!-- Nav Item - Transaction Collapse Menu -->
 <li class="nav-item <?= $sidebarSection == 'transaction' ? 'active' : ''; ?>">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTransaction" aria-expanded="true" aria-controls="collapseTransaction">
-    <i class="fas fa-fw fa-cog"></i>
+  <a class="nav-link <?= $sidebarSection == 'transaction' ? '' : 'collapsed'; ?>" href="#" data-toggle="collapse" data-target="#collapseTransaction" aria-expanded="true" aria-controls="collapseTransaction">
+    <i class="fas fa-fw fa-money-check"></i>
     <span>Transaction</span>
   </a>
   <div id="collapseTransaction" class="collapse <?= $sidebarSection == 'transaction' ? 'show' : ''; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">

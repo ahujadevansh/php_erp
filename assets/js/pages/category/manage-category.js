@@ -6,6 +6,7 @@ var TableDataTables = function(){
         var oTable = manageCategoryTable.dataTable({
             "processing": true,
             "serverSide": true,
+            "pagingType": "full_numbers",
             "ajax": {
                 url: baseURL + filePath,
                 method: "POST",

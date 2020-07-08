@@ -59,7 +59,6 @@ class Database {
         $fields = "`" . implode("`, `", $keys) . "`";
         $placeholder = ":" . implode(", :", $keys);
         $sql = "INSERT INTO `{$table}` ({$fields}) VALUES ({$placeholder})";
-        // die($data['name']);
         $this->stmt = $this->pdo->prepare($sql);
         try
         {

@@ -1,5 +1,6 @@
 <?php
     require_once(__DIR__ . "/../../helper/init.php" );
+    $title = 'Easy ERP';
     $sidebarSection = 'product';
     $sidebarSubSection = 'check_current_inventory' ;
 ?>
@@ -7,9 +8,6 @@
 <html lang="en">
 
 <head>
-<?php
-  $title = 'Easy ERP';
-?>
 <?php require_once(__DIR__ . "/../includes/head-section.php") ?>
   <!-- Place Custom CSS File -->
 </head>

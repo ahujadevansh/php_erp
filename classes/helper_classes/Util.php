@@ -2,16 +2,13 @@
 
 class Util
 {
-    private $di;
     private static $baseUrl;
 
-    public function __construct($di)
-    {
-        $this->di = $di;
-        self::$baseUrl = $this->di->get('config')->get('base_url');
+    public function __construct() {
+        self::$baseUrl = parse_ini_file(__DIR__."/../../config.ini")['base_url'];
     }
 
-    public function redirect($filePath) {
+    public static function redirect($filePath) {
         header('Location: ' . (self::$baseUrl . "views/pages/{$filePath}"));
     }
 
@@ -28,8 +25,7 @@ class Util
         die(var_dump($var));
     }
 
-    public static function truncateWords($str, $count = 50, $apenDots=True)
-    {
+    public static function truncateWords($str, $count = 50, $apenDots=True) {
         $strArray = explode(" ",$str);
         $noOfWords = count($strArray);
         $strArray = array_slice($strArray, 0, $count);
@@ -40,6 +36,25 @@ class Util
             $more = 1;
         }
         return [implode(" ", $strArray), $more];
+    }
+
+    public static function createAssocArray($arrayOfKeys, $data){
+        $assoc_array = array();
+        foreach($arrayOfKeys as $key){
+            $assoc_array[$key] = $data[$key];
+        }
+        return $assoc_array;
+    }
+
+    public static function randString($length = 8){
+        $chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$';
+        $str = '';
+        $max = strlen($chars) - 1;
+
+        for ($i=0; $i < $length; $i++)
+          $str .= $chars[random_int(0, $max)];
+
+        return $str;
     }
 }
 

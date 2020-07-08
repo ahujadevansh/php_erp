@@ -1,15 +1,20 @@
 <?php
     require_once(__DIR__ . "/../../helper/init.php" );
+    $di->get('auth')->loginRequired();
+    $title = "Easy ERP";
     $sidebarSection = 'dashboard';
     $subsidebarSection = '' ;
+    Util::createCSRFToken();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
+  <?php  require_once __DIR__ . "/../includes/head-section.php"; ?>
+  <!--PLACE TO ADD YOUR CUSTOM CSS-->
+
+  <!-- Custom styles for this page -->
+
 <head>
-<?php 
-  $title = 'Easy ERP';
-?>
 <?php require_once(__DIR__ . "/../includes/head-section.php") ?>
   <!-- Place Custom CSS File -->
 </head>
@@ -31,7 +36,6 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -316,7 +320,7 @@
       </div>
       <!-- End of Main Content -->
 
-      
+
     <?php require_once(__DIR__ . "/../includes/footer.php") ?>
 
     </div>
@@ -325,17 +329,17 @@
   </div>
   <!-- End of Page Wrapper -->
 
-  
+
 <?php require_once(__DIR__ . "/../includes/scroll-to-top.php") ?>
 
- 
 
-  
+
+
 <?php require_once(__DIR__ . "/../includes/core-scripts.php") ?>
 
 
 <!-- Place your page level scripts here -->
-<?php require_once(__DIR__ . "/../includes/page-level/index.php") ?>
+<?php require_once(__DIR__ . "/../includes/page-level/index-scripts.php") ?>
 
 </body>
 
